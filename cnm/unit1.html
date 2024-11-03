@@ -1,0 +1,346 @@
+
+       <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styless.css"> 
+    <title>Questions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #6f4c3e; /* Dark brown background */
+            color: #f0f0f0; /* Light text color */
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;  
+            padding: 15px 0; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000; 
+            background-color: rgba(139, 69, 19, 0.9); /* Semi-transparent dark brown */
+        }
+
+        .nav-item {
+            padding: 14px 20px;
+            border-radius: 5px; /* Rounded corners for items */
+        }
+
+        .nav-item a {
+            color: #fff; /* White text for links */
+            text-decoration: none; /* No underline for links */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        .nav-item:hover a {
+            background-color: #8B4513; /* Darker brown on hover */
+            color: #ffe4c4; /* Light peach text color on hover */
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            margin-top: 60px; /* Adjust for fixed navbar */
+        }
+
+        .question-list {
+            flex: 1;
+            padding: 20px;
+            background-color: #9A7B4F;
+            margin-right: 10px;
+color: black; /* White text for links */
+        }
+
+        .code-output-container {
+            flex: 2;
+            display: none; /* Initially hide the output */
+            flex-direction: column;
+        }
+
+        .code-container, .output-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #80471C;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item"><a href="about.html">Submitted By</a></div>
+    </nav>
+    <div class="container">
+        <div class="question-list">
+            <h3><center>UNIT 1</center></h3>
+            <ul><br>
+                <li><a href="#" onclick="showProgram(1)" style="color: #f0f0f0;">1. Binary To Decimal</a></li>
+                <br>
+                <li><a href="#" onclick="showProgram(2)" style="color: #f0f0f0;">2. Decimal To Binary</a></li>
+            
+                <br>
+                <li><a href="#" onclick="showProgram(3)" style="color: #f0f0f0;">3. Binary Representation</a></li>
+                <br>
+                <li><a href="#" onclick="showProgram(4)" style="color: #f0f0f0;">4. ADD/SUB/Multiplication/Division</a></li>
+            </ul>
+       
+
+
+
+            </ul>
+        </div>
+        <div class="code-output-container" id="output-container">
+            <div class="code-container" id="code1">
+                <h2><center></u>code</center></u></h2>
+                <pre><code><center>
+
+Binary to decimal:
+
+#include < stdio.h >
+int main() { 
+    int b, dec = 0, i= 1, rem;
+    printf("Enter a binary number: ");
+    scanf("%d", &b);
+
+    while (b > 0) {
+        rem = b % 10; 
+        dec= dec + rem*i;  
+        b = b / 10; 
+        i = i * 2; 
+    }
+    printf("Decimal value: %d\n", dec);
+    return 0;
+}
+
+
+             </center>  </code></pre>
+            </div>
+            <div class="output-container" id="output1">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Enter a binary number: 1000
+Decimal value: 8
+
+
+
+
+               </center> </code></pre>
+            </div>
+
+            <div class="code-container" id="code2" style="display:none;">
+                <h2><center> code</center></h2>
+                <pre><code><center>
+
+
+<u>Decimal to binary</u> 
+#include < stdio.h >
+#include < conio.h >
+Int main()
+{
+Int n,rem,b=0,base=1;
+Printf(“enter a decimal number”);
+Scanf(“%d”,&n);
+While(n>0)
+Rem=n%2;
+b=b+rem*base;
+n=n/2;
+base=base*10;
+}
+Printf(“binary number is %d”,b);
+getch();
+}
+
+
+
+
+             </center>   </code></pre>
+            </div>
+            <div class="output-container" id="output2" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+Enter a decimal number : 8
+binary number is :1000
+
+               </center> </code></pre>
+            </div>
+
+            <div class="code-container" id="code3" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+<u>Binary representation.</u>
+    
+ #include < stdio.h >
+#include < math.h >
+void printBinary(float number) {
+  unsigned int binary = (unsigned int)&number;
+    for (int i = sizeof(float) * 8 - 1; i >= 0; i--) {
+        printf("%d", (*binary >> i) & 1);
+        if (i % 8 == 0) {
+            printf(" ");
+        }
+    }
+    printf("\n");
+}
+int main() {
+    float number;
+    printf("Enter a float number: ");
+    scanf("%f", &number);
+    printf("Binary representation of %f is: \n", number);
+    printBinary(number);
+    return 0;
+}
+
+
+                </center></code></pre>
+            </div>
+            <div class="output-container" id="output3" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Enter a float number: 2.25
+Binary representation of 2.250000 is: 
+01000000 00010000 00000000 00000000
+
+                </center></code></pre>
+            </div>
+<div class="code-container" id="code4" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+#include < stdio.h >
+
+void add(double a, double b);
+void subtract(double a, double b);
+void multiply(double a, double b);
+void divide(double a, double b);
+
+int main() {
+    int choice;
+    double num1, num2;
+
+    do {
+       
+        printf("Arithmetic Operations Menu\n");
+        printf("1. Addition\n");
+        printf("2. Subtraction\n");
+        printf("3. Multiplication\n");
+        printf("4. Division\n");
+        printf("5. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        if (choice >= 1 && choice <= 4) {
+          
+            printf("Enter two numbers: ");
+            scanf("%lf %lf", &num1, &num2);
+        }
+
+       
+        switch (choice) {
+            case 1:
+                add(num1, num2);
+                break;
+            case 2:
+                subtract(num1, num2);
+                break;
+            case 3:
+                multiply(num1, num2);
+                break;
+            case 4:
+                divide(num1, num2);
+                break;
+            case 5:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice. Please try again.\n");
+                break;
+        }
+        printf("\n");
+    } while (choice != 5);
+
+    return 0;
+}
+void add(double a, double b) {
+    printf("Result: %.2lf\n", a + b);
+}
+
+void subtract(double a, double b) {
+    printf("Result: %.2lf\n", a - b);
+}
+
+void multiply(double a, double b) {
+    printf("Result: %.2lf\n", a * b);
+}
+
+void divide(double a, double b) {
+    if (b != 0) {
+        printf("Result: %.2lf\n", a / b);
+    } else {
+        printf("Error: Division by zero is not allowed.\n");
+    }
+}  
+
+
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output4" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Arithmetic Operations Menu
+1. Addition
+2. Subtraction
+3. Multiplication
+4. Division
+5. Exit	
+Enter your choice: 1
+Enter two numbers: 2.1
+1.2
+Result: 3.30
+ Arithmetic Operations Menu
+1. Addition
+2. Subtraction
+3. Multiplication
+4. Division
+5. Exit
+Enter your choice: 5
+Exiting...
+
+
+
+ </center></code></pre>
+            </div>
+
+        
+    </div>
+
+    <script>
+        function showProgram(questionNumber) {
+            // Hide all code and output sections
+            document.querySelectorAll('.code-container,.output-container').forEach((el) => {
+                el.style.display = 'none';
+            });
+
+            // Show the selected question's code and output
+            document.getElementById('code' + questionNumber).style.display = 'block';
+            document.getElementById('output' + questionNumber).style.display = 'block';
+
+            // Show the code-output container
+            document.getElementById('output-container').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

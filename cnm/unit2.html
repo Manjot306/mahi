@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styless.css"> 
+    <title>Questions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #6f4c3e; /* Dark brown background */
+            color: #f0f0f0; /* Light text color */
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;  
+            padding: 15px 0; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000; 
+            background-color: rgba(139, 69, 19, 0.9); /* Semi-transparent dark brown */
+        }
+
+        .nav-item {
+            padding: 14px 20px;
+            border-radius: 5px; /* Rounded corners for items */
+        }
+
+        .nav-item a {
+            color: #fff; /* White text for links */
+            text-decoration: none; /* No underline for links */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        .nav-item:hover a {
+            background-color: #8B4513; /* Darker brown on hover */
+            color: #ffe4c4; /* Light peach text color on hover */
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            margin-top: 60px; /* Adjust for fixed navbar */
+        }
+
+        .question-list {
+            flex: 1;
+            padding: 20px;
+            background-color: #9A7B4F;
+            margin-right: 10px;
+color: black; /* White text for links */
+        }
+
+        .code-output-container {
+            flex: 2;
+            display: none; /* Initially hide the output */
+            flex-direction: column;
+        }
+
+        .code-container, .output-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #80471C;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item"><a href="about.html">Submitted By</a></div>
+    </nav>
+    <div class="container">
+        <div class="question-list">
+            <h3><center>UNIT 2</center></h3>
+            <ul><br><h4>Iterative Method</h4>
+                <li><a href="#" onclick="showProgram(1)" style="color: #f0f0f0;">1. Bisection Method </a></li>
+                <br>
+                <li><a href="#" onclick="showProgram(2)" style="color: #f0f0f0;">2. Secant Method </a></li>
+              
+                <br>
+                <li><a href="#" onclick="showProgram(3)" style="color: #f0f0f0;">3. Falsi-Position Method </a></li>
+                <br>
+                <li><a href="#" onclick="showProgram(4)" style="color: #f0f0f0;">4. Newton-Raphson Method</a></li><br>
+                 <li><a href="#" onclick="showProgram(5)" style="color: #f0f0f0;">5.Birge-Vieta Method </a></li>
+                <h4><u>Linear Equation</u></h4>
+                <h4>Direct Method:-</h4>
+                 <li><a href="#" onclick="showProgram(6)" style="color: #f0f0f0;">6.Guass-Elimination Method</a></li><br>
+               <li><a href="#" onclick="showProgram(7)" style="color: #f0f0f0;">7. Guass-Jordan Method</a></li><br>
+                <h4><u>Iterative method:-</u></h4>
+                 <li><a href="#" onclick="showProgram(8)" style="color: #f0f0f0;">8.Guass-Seidal Method</a></li>
+            </ul>
+       
+
+
+
+            </ul>
+        </div>
+        <div class="code-output-container" id="output-container">
+            <div class="code-container" id="code1">
+                <h2><center></u>code</center></u></h2>
+                <pre><code><center>
+                
+Bisection Method
+#include< stdio.h >
+#include< conio.h >
+#include<math.h>
+float f(float x)
+{
+return x*x*x-x-1;
+}
+int main()
+{
+float a,b,c,d;
+int i=0;
+printf("enter the interval (a,b)in which the roots of the equation lies");
+scanf("%f%f",&a,&b);
+printf("\n enter the tolerance value:-");
+scanf("%f",&d);
+do{
+ c=(a+b)/2;
+ ++i;
+ if(f(a)*f(c)<0)
+ {
+ b=c;
+ printf("\n value of a and b in %d iteration is %f and %f",i,a,b);
+ }
+ else
+ {
+ a=c;
+ printf("\n  value of a and b in %d iteration is %f and %f",i,a,b);
+ }
+ }
+ while(fabs(a-b)>d||f(c)==0);
+ printf("\n root is %f",c);
+ printf("\n press any key to exit");
+ getch();
+ }
+
+
+             </center>  </code></pre>
+            </div>
+            <div class="output-container" id="output1">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+   enter the interval (a,b)in which the roots of the equation lies: 0.5  1
+   enter the tolerance value:-0.001
+   value of a and b in 1 iteration is 0.750000 and 1.000000
+   value of a and b in 2 iteration is 0.875000 and 1.000000
+   value of a and b in 3 iteration is 0.937500 and 1.000000
+   value of a and b in 4 iteration is 0.968750 and 1.000000
+   value of a and b in 5 iteration is 0.984375 and 1.000000
+   value of a and b in 6 iteration is 0.992188 and 1.000000
+   value of a and b in 7 iteration is 0.996094 and 1.000000
+   value of a and b in 8 iteration is 0.998047 and 1.000000
+   value of a and b in 9 iteration is 0.999023 and 1.000000
+   root is 0.999023
+
+
+
+               </center> </code></pre>
+            </div>
+
+            <div class="code-container" id="code2" style="display:none;">
+                <h2><center> code</center></h2>
+                <pre><code><center>
+
+
+2. secant  method :
+
+#include< stdio.h >
+#include< math.h >
+double f(double x)
+{
+return x*x*x-x-2;
+}
+int main()
+{
+double x0,x1,x2,tol;
+int max_iter,iter=0;
+
+printf("enter the value of x0:");
+scanf("%lf",&x0);
+printf("enter the value of x1:");
+scanf("%lf",&x1);
+printf("entr the tolerance:");
+scanf("%lf",&tol);
+ printf("enter the maximum number of iteration:");
+ scanf("%d",&max_iter);
+
+ printf("iteration \t x0 \t\t x1 \t\t x2 \t\t f(x2)\n");
+
+ while(iter<max_iter)
+ {
+ double f_x0=f(x0);
+ double f_x1=f(x1);
+ if(f_x1-f_x0==0)
+ {
+ printf("error");
+ return 1;
+ }
+ //method formula
+ x2=x1-f_x1*(x1-x0)/(f_x1-f_x0);
+ printf("%d\t\t %.6f\t %.6f\t %.6f \t %.6f\n", iter+1,x0,x1,x2,f(x2));
+ if(fabs(f(x2))<tol|| fabs(x2-x1)<tol)
+ {
+ printf("roots found: %.6f\n",x2);
+ return 0;
+ }
+ x0=x1;
+ x1=x2;
+ iter++;
+ }
+ printf("method did not converge after %d iteration .\n",max_iter);
+ return 1;
+ getch();
+ }
+
+
+
+
+             </center>   </code></pre>
+            </div>
+            <div class="output-container" id="output2" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Enter the value of x0: 0.5
+Enter the value of  x1: 1.5
+Enter the tolerance: 0.001
+Enter the maximum number of iterations: 10
+Iteration	 x0		 x1		 x2		 f(x2)
+1		 0.600000	 1.500000	 1.549801	 0.172639
+2		 1.500000	 1.549801	 1.520915	 -0.002761
+3		 1.549801	 1.520915	 1.521370	 -0.000059
+Root found: 1.521370
+                                            
+
+               </center> </code></pre>
+            </div>
+
+            <div class="code-container" id="code3" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+
+<b>Falsi position</b> 
+
+ #include< stdio.h >
+#include< math.h >
+
+int main() {
+    float x0, x1, x2;
+    float f0, f1, f2;
+    float tolerance;
+    int iteration = 0;
+    printf("Enter two values for x0 and x1: ");
+    scanf("%f %f", &x0, &x1);
+
+    printf("Enter the tolerance: ");
+    scanf("%f", &tolerance);
+
+   f0 = x0 * x0 * x0 - 4 * x0 + 1;
+   f1 = x1 * x1 * x1 - 4 * x1 + 1;
+  
+  if (f0 * f1 > 0) {
+        printf("Initial guesses do not bracket the root.\n");
+        return 1;
+                    }
+         do {
+        x2 = x1 - (f1 * (x1 - x0)) / (f1 - f0);
+        f2 = x2 * x2 * x2 - 4 * x2 + 1;
+       printf("Iteration %d: x2 = %f, f(x2) = %f\n", ++iteration, x2, f2);
+        if (f0 * f2 < 0) {
+            x1 = x2;
+            f1 = f2;
+        } else {
+            x0 = x2;
+            f0 = f2;
+        }
+      } while (fabs(f2) > tolerance);  
+   return 0;
+}
+
+
+
+
+                </center></code></pre>
+            </div>
+            <div class="output-container" id="output3" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Enter two values for x0 and x1: 1
+2
+Enter the tolerance: 0.001
+Iteration 1: x2 = 1.666667, f(x2) = -1.037037
+Iteration 2: x2 = 1.836364, f(x2) = -0.152812
+Iteration 3: x2 = 1.858055, f(x2) = -0.017532
+Iteration 4: x2 = 1.860500, f(x2) = -0.001951
+Iteration 5: x2 = 1.860772, f(x2) = -0.000217
+
+
+                </center></code></pre>
+            </div>
+<div class="code-container" id="code4" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+ 4 .  Newton raphon method 
+
+#include < stdio.h >
+#include < math.h >
+int main() {
+    double x0, x1, tol;
+    int max_iter, iter = 0;
+    double f(double x)
+    {
+        return x * x * x - x - 2;
+    }
+    double f_prime(double x) {
+    return 3 * x * x - 1;
+    }
+    printf("Enter the value  x0: ");
+    scanf("%lf", &x0);
+    
+    printf("Enter the tolerance: ");
+    scanf("%lf", &tol);
+    
+    printf("Enter the maximum number of iterations: ");
+    scanf("%d", &max_iter);
+
+    printf("Iteration\t x0\t\t x1\t\t f(x1)\n");
+
+    while (iter < max_iter) {
+        double f_x0 = f(x0);
+        double f_prime_x0 = f_prime(x0);
+
+        if (f_prime_x0 == 0) {
+            printf("Error: Division by zero in the Newton-Raphson method.\n");
+            return 1; 
+        }
+ x1 = x0 - f_x0 / f_prime_x0;
+
+        printf("%d\t\t %.6f\t %.6f\t %.6f\n", iter + 1, x0, x1, f(x1));
+
+        if (fabs(f(x1)) < tol) {
+            printf("Root found: %.6f\n", x1);
+            return 0; 
+        }
+        x0 = x1;
+        iter++;           
+    }
+              printf("Method did not converge after %d iterations.\n", max_iter);
+    return 1; 
+}
+
+
+
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output4" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+
+Enter the value x0: 1.5
+Enter the tolerance: 0.001
+Enter the maximum number of iterations: 10
+Iteration	 x0		 x1		 f(x1)
+1		 1.500000	 1.521739	 0.002137
+2		 1.521739	 1.521380	 0.000001
+Root found: 1.521380
+
+
+
+ </center></code></pre>
+            </div>
+
+<div class="code-container" id="code5" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+                
+#include < stdio.h >
+#include < math.h >
+
+int main() {
+    double a, b, c, tol;
+    int max_iter, iter = 0;
+    double x0 = 0.0; 
+    double x1;
+    double residual;
+
+    printf("Enter the coefficients for the polynomial ax^2 + bx + c:\n");
+    printf("Enter coefficient a: ");
+    scanf("%lf", &a);
+    printf("Enter coefficient b: ");
+    scanf("%lf", &b);
+    printf("Enter coefficient c: ");
+    scanf("%lf", &c);
+
+    printf("Enter the tolerance: ");
+    scanf("%lf", &tol);
+    
+    printf("Enter the maximum number of iterations: ");
+    scanf("%d", &max_iter);
+                printf("Iteration\t x0\t\t Residual\n");
+                while (iter < max_iter) {
+        residual = a * x0 * x0 + b * x0 + c;
+        if (fabs(residual) < tol) 
+{
+            printf("Root found: %.6f\n", x0);
+            return 0;       
+ }
+
+        double f_prime_x0 = 2 * a * x0 + b;
+        if (f_prime_x0 == 0)
+ {
+            printf("Error: Division by zero in the method.\n");
+            return 1;     
+   }
+
+        x1 = x0 - residual / f_prime_x0;
+        printf("%d\t\t %.6f\t %.6f\n", iter + 1, x0, residual);
+        x0 = x1;
+        iter++;
+    }
+
+    printf("Method did not converge after %d iterations.\n", max_iter);
+    return 1; 
+}
+
+ 
+
+
+</center></code></pre>
+            </div>
+            
+             <div class="output-container" id="output5" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Enter the coefficients for the polynomial ax^2 + bx + c:
+Enter coefficient a: 2
+Enter coefficient b: 7
+Enter coefficient c: 8
+Enter the tolerance: 0.001
+Enter the maximum number of iterations: 8
+Iteration	 x0		 Residual
+1		 0.000000	 8.000000
+2		 -1.142857	 ‘2.612245
+3		 -2.218487	 2.313961
+4		 -0.983683	 3.049483
+5		 -1.978534	 1.979455
+6		 0.186853	 9.377796
+7		 -1.023590	 2.930343
+8		 -2.032092	 2.034152
+Method did not converge after 8 iterations.
+
+
+
+
+
+ </center></code></pre>
+            </div>
+        
+    <div class="code-container" id="code6" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+                
+#include < stdio.h >
+#define N 3  
+
+int main() {
+    int i, j, k;
+    float A[N][N+1] = {
+        {2, -1, 1, 3},
+        {1, 2, 3, 8},
+        {3, 1, -1, 3}
+    };
+
+    for (i = 0; i < N; i++)
+       {
+        float pivot = A[i][i];
+        for (j = 0; j <= N; j++) 
+        {
+            A[i][j] /= pivot;
+        }
+
+        for (k = 0; k < N; k++) 
+{
+            if (k != i)
+ {
+                float factor = A[k][i];
+                for (j = 0; j <= N; j++)
+ {
+                    A[k][j] -= factor * A[i][j];
+                }
+            }
+        }
+    }
+    printf("Solutions:\n");
+    for (i = 0; i < N; i++) 
+{
+        printf("x%d = %.2f\n", i + 1, A[i][N]);
+    }
+                  return 0;
+}
+
+
+</center></code></pre>
+            </div>
+            
+             <div class="output-container" id="output6" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Output :
+Solutions:
+x1 = 1.20
+x2 = 1.00
+x3 = 1.60
+
+
+</center></code></pre>
+            </div>
+            
+                   
+    <div class="code-container" id="code7" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+                
+#include < stdio.h >
+int main() 
+{
+    int n;
+              printf("Enter the number of variables: ");
+              scanf("%d", &n);
+               float matrix[n][n+1];
+               printf("Enter the augmented matrix:\n");
+    for (int i = 0; i < n; i++)
+ {
+        for (int j = 0; j <= n; j++)
+ {
+            scanf("%f", &matrix[i][j]);
+        }
+    }
+    for (int i = 0; i < n; i++) 
+{        for (int j = i+1; j < n; j++) 
+{
+            float ratio = matrix[j][i] / matrix[i][i];
+            for (int k = 0; k <= n; k++)
+ {
+                matrix[j][k] -= ratio * matrix[i][k];
+            }
+        }
+    }
+    for (int i = n-1; i >= 0; i--)
+ {
+        for (int j = 0; j < i; j++) 
+{
+            float ratio = matrix[j][i] / matrix[i][i];
+            for (int k = 0; k <= n; k++) 
+{
+                matrix[j][k] -= ratio * matrix[i][k];
+            }
+        }
+    }
+
+    printf("Solution:\n");
+    for (int i = 0; i < n; i++) 
+{
+        printf("x%d = %.2f\n", i+1, matrix[i][n] / matrix[i][i]);
+            }
+                  return 0;
+}
+
+
+
+
+
+</center></code></pre>
+            </div>
+            
+             <div class="output-container" id="output7" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+        Enter the number of variables: 2
+        Enter the augmented matrix:
+        solution: 
+	    x1=-1.00
+	   x2=2.0
+
+
+
+ </center></code></pre>
+            </div>
+         <div class="code-container" id="code8" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+        
+#include< stdio.h >
+#include< conio.h >
+#include< math.h >
+   3x + 20y - z = -18
+   2x - 3y + 20z = 25
+   20x + y - 2z = 17
+
+   20x + y - 2z = 17
+   3x + 20y -z = -18
+   2x - 3y + 20z = 25
+
+   x = (17-y+2z)/20
+   y = (-18-3x+z)/20
+   z = (25-2x+3y)/20
+#define f1(x,y,z)  (17-y+2*z)/20
+#define f2(x,y,z)  (-18-3*x+z)/20
+#define f3(x,y,z)  (25-2*x+3*y)/20
+int main()
+{
+ float x0=0, y0=0, z0=0, x1, y1, z1, e1, e2, e3, e;
+ int count=1;
+ clrscr();
+ printf("Enter tolerable error:\n");
+ scanf("%f", &e);
+
+ printf("\nCount\tx\ty\tz\n");
+ do
+ {
+  x1 = f1(x0,y0,z0);
+  y1 = f2(x1,y0,z0);
+  z1 = f3(x1,y1,z0);
+  printf("%d\t%0.4f\t%0.4f\t%0.4f\n",count, x1,y1,z1);
+  e1 = fabs(x0-x1);
+  e2 = fabs(y0-y1);
+  e3 = fabs(z0-z1);
+  count++;
+  x0 = x1;
+  y0 = y1;
+  z0 = z1;
+
+ }while(e1>e && e2>e && e3>e);
+
+ printf("\nSolution: x=%0.3f, y=%0.3f and z = %0.3f\n",x1,y1,z1);
+
+ getch();
+ return 0;
+}
+
+
+
+
+
+</center></code></pre>
+            </div>
+            
+             <div class="output-container" id="output8" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+Enter tolerable error:
+0.001
+
+Count    x       y       z
+1       0.8500  0.9000  1.0250
+2       0.9512  0.9028  0.9904
+3       0.9506  0.9028  0.9906
+4       0.9507  0.9028  0.9905
+
+Solution: x=0.9507, y=0.9028 and z = 0.9905
+
+
+
+ </center></code></pre>
+            </div>
+        
+        
+
+        
+
+    <script>
+        function showProgram(questionNumber) {
+            // Hide all code and output sections
+            document.querySelectorAll('.code-container,.output-container').forEach((el) => {
+                el.style.display = 'none';
+            });
+
+            // Show the selected question's code and output
+            document.getElementById('code' + questionNumber).style.display = 'block';
+            document.getElementById('output' + questionNumber).style.display = 'block';
+
+            // Show the code-output container
+            document.getElementById('output-container').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

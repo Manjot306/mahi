@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styless.css"> 
+    <title>Questions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #6f4c3e; /* Dark brown background */
+            color: #f0f0f0; /* Light text color */
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;  
+            padding: 15px 0; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000; 
+            background-color: rgba(139, 69, 19, 0.9); /* Semi-transparent dark brown */
+        }
+
+        .nav-item {
+            padding: 14px 20px;
+            border-radius: 5px; /* Rounded corners for items */
+        }
+
+        .nav-item a {
+            color: #fff; /* White text for links */
+            text-decoration: none; /* No underline for links */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        .nav-item:hover a {
+            background-color: #8B4513; /* Darker brown on hover */
+            color: #ffe4c4; /* Light peach text color on hover */
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            margin-top: 60px; /* Adjust for fixed navbar */
+        }
+
+        .question-list {
+            flex: 1;
+            padding: 20px;
+            background-color: #9A7B4F;
+            margin-right: 10px;
+color: black; /* White text for links */
+        }
+
+        .code-output-container {
+            flex: 2;
+            display: none; /* Initially hide the output */
+            flex-direction: column;
+        }
+
+        .code-container, .output-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #80471C;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item"><a href="about.html">Submitted By</a></div>
+    </nav>
+    <div class="container">
+        <div class="question-list">
+            <h3><center>UNIT 4</center></h3>
+            <ul><br><h4> Approximation Of Function </h4>
+                <li><a href="#" onclick="showProgram(1)" style="color: #f0f0f0;">1. Taylor Series </a></li>
+                <br>
+                <li><a href="#" onclick="showProgram(2)" style="color: #f0f0f0;">2. Chebyshev Polynomials</a></li>
+              
+                <br>  <h4><u>Differential Equation </u></h4>
+                <li><a href="#" onclick="showProgram(3)" style="color: #f0f0f0;">3. Euler's Method </a></li>
+                <br>
+                <li><a href="#" onclick="showProgram(4)" style="color: #f0f0f0;">4.Runga-Kutta method(2nd order) </a></li><br>
+                 <li><a href="#" onclick="showProgram(5)" style="color: #f0f0f0;">Runga-Kutta method(4th order)</a></li>
+                <h4><u>Predictor correct Method:-</u></h4>
+                 <li><a href="#" onclick="showProgram(6)" style="color: #f0f0f0;">6.Modified Euler's Method </a></li><br>
+               
+      </ul>
+        </div>
+        <div class="code-output-container" id="output-container">
+            <div class="code-container" id="code1">
+                <h2><center></u>code</center></u></h2>
+                <pre><code><center>
+
+ #include< stdio.h >
+           double factorial(int n) {
+            double result = 1.0;
+            for (int i = 1; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+        double taylorSeries(double x, int terms) {
+            double sum = 0.0;
+            for (int n = 0; n < terms; n++) {
+                sum += (pow(x, n) / factorial(n));
+            }
+            return sum;
+        }
+        int main() {
+            double x;
+            int terms;
+            printf("Enter the value of x: ");
+            scanf("%lf", &x);
+            printf("Enter the number of terms in the Taylor series: ");
+            scanf("%d", &terms);
+            double result = taylorSeries(x, terms);
+            printf("e^%.2f ≈ %.6f\n", x, result);
+            return 0;
+        }
+
+
+             </center>  </code></pre>
+            </div>
+            <div class="output-container" id="output1">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+    Enter the value of x: 1
+    Enter the number of terms in the Taylor series: 10
+    e^1.00 ≈ 2.718282
+    
+
+
+
+
+               </center> </code></pre>
+            </div>
+
+            <div class="code-container" id="code2" style="display:none;">
+                <h2><center> code</center></h2>
+                <pre><code><center>
+
+
+        #include < stdio.h >
+        #include < math.h >
+        double chebyshev(int n, double x) {
+            if (n == 0) {
+                return 1;
+            } else if (n == 1) {
+                return x;
+            } else {
+                return 2 * x * chebyshev(n - 1, x) - chebyshev(n - 2, x);
+            }
+        }
+         int main() {
+            int n;
+            double x;
+            printf("Enter the degree of the Chebyshev polynomial (n): ");
+            scanf("%d", &n);
+            printf("Enter the value of x: ");
+            scanf("%lf", &x);
+            double result = chebyshev(n, x);
+            printf("T_%d(%.2f) = %.6f\n", n, x, result);
+            return 0;
+        }
+
+
+
+             </center>   </code></pre>
+            </div>
+            <div class="output-container" id="output2" style="display:none;">
+                <h2><center>Output</center></h2>
+                 <pre><code><center>
+    Enter the degree of the Chebyshev polynomial (n): 3
+    Enter the value of x: 0.5
+    T_3(0.50) = 0.875000
+    
+
+               </center> </code></pre>
+            </div>
+
+            <div class="code-container" id="code3" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+ #include < stdio.h >
+float f(float x, float y) {
+            return x + y; 
+        }
+        void euler(float x0, float y0, float h, int n) {
+            float x = x0;
+            float y = y0;
+        
+            printf("x\t\ty\n");
+            for (int i = 0; i < n; i++) {
+                printf("%.2f\t\t%.6f\n", x, y);
+                y = y + h * f(x, y);
+                x = x + h;
+            }
+        }
+        
+        int main() {
+            float x0, y0, h;
+            int n;
+        
+            printf("Enter initial values (x0, y0): ");
+            scanf("%f %f", &x0, &y0);
+            printf("Enter step size (h): ");
+            scanf("%f", &h);
+            printf("Enter number of steps (n): ");
+            scanf("%d", &n);
+        
+            euler(x0, y0, h, n);
+        
+            return 0;
+        }
+
+
+                </center></code></pre>
+            </div>
+            <div class="output-container" id="output3" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+ Enter initial values (x0, y0): 0 1
+    Enter step size (h): 0.1
+    Enter number of steps (n): 10
+    x               y
+    0.00            1.000000
+    0.10            1.100000
+    0.20            1.210000
+    0.30            1.331000
+    0.40            1.464100
+    0.50            1.610510
+    0.60            1.771561
+    0.70            1.948717
+    0.80            2.143588
+    0.90            2.357947
+        
+
+                </center></code></pre>
+            </div>
+<div class="code-container" id="code4" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+
+ #include< stdio.h>
+
+        double f(double t, double y) {
+            return t + y;
+        }
+        
+        void rungeKutta2(double t0, double y0, double h, int n) {
+            double t = t0;
+            double y = y0;
+            
+            printf("t0 = %.2f, y0 = %.2f\n", t0, y0);
+            printf("Using step size h = %.2f\n", h);
+            printf("Results:\n");
+            printf("t\t\ty\n");
+            
+            for (int i = 0; i <= n; i++) {
+                printf("%.2f\t%.5f\n", t, y);
+                
+                double k1 = h * f(t, y);
+                double k2 = h * f(t + h, y + k1);
+                
+                y += (k1 + k2) / 2;
+                t += h;
+            }
+        }
+        
+        int main() {
+            double t0 = 0.0;
+            double y0 = 1.0;
+            double h = 0.1;
+            int n = 10;
+            
+            rungeKutta2(t0, y0, h, n);
+            
+            return 0;
+        }
+        
+
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output4" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+
+    t0 = 0.00, y0 = 1.00
+    Using step size h = 0.10
+    Results:
+    t		y
+    0.00	1.00000
+    0.10	1.10500
+    0.20	1.22105
+    0.30	1.34913
+    0.40	1.49027
+    0.50	1.64554
+    0.60	1.81609
+    0.70	2.00320
+    0.80	2.20821
+    0.90	2.43244
+    1.00	2.67746
+
+
+ </center></code></pre>
+            </div>
+
+<div class="code-container" id="code5" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+
+         #include< stdio.h >
+
+        double f(double t, double y) {
+            return t + y;  // Example: dy/dt = t + y
+        }
+        
+        void rungeKutta4(double t0, double y0, double h, int n) {
+            double t = t0;
+            double y = y0;
+        
+            printf("t0 = %.2f, y0 = %.2f\n", t0, y0);
+            printf("Using step size h = %.2f\n", h);
+            printf("Results:\n");
+            printf("t\t\ty\n");
+        
+            for (int i = 0; i <= n; i++) {
+                printf("%.2f\t%.5f\n", t, y);
+        
+                double k1 = h * f(t, y);
+                double k2 = h * f(t + h / 2, y + k1 / 2);
+                double k3 = h * f(t + h / 2, y + k2 / 2);
+                double k4 = h * f(t + h, y + k3);
+        
+                y += (k1 + 2 * k2 + 2 * k3 + k4) / 6;
+                t += h;
+            }
+        }
+        
+        int main() {
+            double t0 = 0.0;
+            double y0 = 1.0;
+            double h = 0.1;
+            int n = 10;
+        
+            rungeKutta4(t0, y0, h, n);
+        
+            return 0;
+        }
+
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output5" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+    t0 = 0.00, y0 = 1.00
+    Using step size h = 0.10
+    Results:
+    t		y
+    0.00	1.00000
+    0.10	1.10517
+    0.20	1.22140
+    0.30	1.34984
+    0.40	1.49059
+    0.50	1.64501
+    0.60	1.81459
+    0.70	2.00101
+    0.80	2.20523
+    0.90	2.42851
+    1.00	2.67214
+
+
+ </center></code></pre>
+            </div>
+            <div class="code-container" id="code6" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+       #include< stdio.h >
+
+        float f(float x, float y) {
+            return x + y; 
+        }
+         void modified_euler(float x0, float y0, float h, int n) {
+            float x = x0;
+            float y = y0;
+            printf("x\t\ty\n");
+            for (int i = 0; i <= n; i++) {
+                printf("%.2f\t\t%.6f\n", x, y);
+                float y_predict = y + h * f(x, y);
+                y = y + (h / 2) * (f(x, y) + f(x + h, y_predict));
+                x = x + h;
+            }
+        }
+        int main() {
+            float x0, y0, h;
+            int n;
+            printf("Enter initial values (x0, y0): ");
+            scanf("%f %f", &x0, &y0);
+            printf("Enter step size (h): ");
+            scanf("%f", &h);
+            printf("Enter number of steps (n): ");
+            scanf("%d", &n);
+        
+            modified_euler(x0, y0, h, n);
+        
+            return 0;
+        }
+        
+
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output6" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+
+  Enter initial values (x0, y0): 0 1
+    Enter step size (h): 0.1
+    Enter number of steps (n): 10
+    x               y
+    0.00            1.000000
+    0.10            1.100000
+    0.20            1.210000
+    0.30            1.331000
+    0.40            1.464100
+    0.50            1.610510
+    0.60            1.771561
+    0.70            1.948717
+    0.80            2.143588
+    0.90            2.357947
+    1.00            2.593060
+        
+
+ </center></code></pre>
+            </div>
+
+        
+    </div>
+
+    <script>
+        function showProgram(questionNumber) {
+            // Hide all code and output sections
+            document.querySelectorAll('.code-container,.output-container').forEach((el) => {
+                el.style.display = 'none';
+            });
+
+            // Show the selected question's code and output
+            document.getElementById('code' + questionNumber).style.display = 'block';
+            document.getElementById('output' + questionNumber).style.display = 'block';
+
+            // Show the code-output container
+            document.getElementById('output-container').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>

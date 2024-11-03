@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styless.css"> 
+    <title>Questions</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #6f4c3e; /* Dark brown background */
+            color: #f0f0f0; /* Light text color */
+        }
+
+        .navbar {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;  
+            padding: 15px 0; 
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            z-index: 1000; 
+            background-color: rgba(139, 69, 19, 0.9); /* Semi-transparent dark brown */
+        }
+
+        .nav-item {
+            padding: 14px 20px;
+            border-radius: 5px; /* Rounded corners for items */
+        }
+
+        .nav-item a {
+            color: #fff; /* White text for links */
+            text-decoration: none; /* No underline for links */
+            transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+        }
+
+        .nav-item:hover a {
+            background-color: #8B4513; /* Darker brown on hover */
+            color: #ffe4c4; /* Light peach text color on hover */
+        }
+
+        .container {
+            display: flex;
+            padding: 20px;
+            margin-top: 60px; /* Adjust for fixed navbar */
+        }
+
+        .question-list {
+            flex: 1;
+            padding: 20px;
+            background-color: #9A7B4F;
+            margin-right: 10px;
+color: black; /* White text for links */
+        }
+
+        .code-output-container {
+            flex: 2;
+            display: none; /* Initially hide the output */
+            flex-direction: column;
+        }
+
+        .code-container, .output-container {
+            flex: 1;
+            padding: 20px;
+            background-color: #80471C;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-item"><a href="index.html">Home</a></div>
+        <div class="nav-item"><a href="about.html">Submitted By</a></div>
+    </nav>
+    <div class="container">
+        <div class="question-list">
+            <h3><center>UNIT 3</center></h3>
+            <ul><br><h4> Interpolation </h4>
+                <li><a href="#" onclick="showProgram(1)" style="color: #f0f0f0;">1. Lagrange Interpolation </a></li>
+                <br>
+                <li><a href="#" onclick="showProgram(2)" style="color: #f0f0f0;">2.  Inverse Lagrange Interpolation</a></li>
+              
+                <br>  <h4><u>Newton's Method of Interpolation </u></h4>
+                <li><a href="#" onclick="showProgram(3)" style="color: #f0f0f0;">3. Newton's Method of Forward Interpolation </a></li>
+                <br>
+                <li><a href="#" onclick="showProgram(4)" style="color: #f0f0f0;">4.Newton's Method of Backword  Interpolation </a></li><br>
+                 <li><a href="#" onclick="showProgram(5)" style="color: #f0f0f0;">5.Newton's Method of  divided Interpolation  </a></li>
+                <h4><u>Numerical Integration </u></h4>
+                 <li><a href="#" onclick="showProgram(6)" style="color: #f0f0f0;">6.Trapezodial Rule </a></li><br>
+               <li><a href="#" onclick="showProgram(7)" style="color: #f0f0f0;">7. simpson's 1\3rd Rule</a></li><br>
+            
+                 <li><a href="#" onclick="showProgram(8)" style="color: #f0f0f0;">8. simpson's 3\8th  Rule
+</a></li>
+            </ul>
+       
+
+
+
+            </ul>
+        </div>
+        <div class="code-output-container" id="output-container">
+            <div class="code-container" id="code1">
+                <h2><center></u>code</center></u></h2>
+                <pre><code><center>
+
+#include< stdio.h >
+#include< conio.h >
+
+void main()
+{
+	 float x[100], y[100], xp, yp=0, p;
+	 int i,j,n;
+	 clrscr();
+
+	 printf("Enter number of data: ");
+	 scanf("%d", &n);
+	 printf("Enter data:\n");
+	 for(i=1;i<=n;i++)
+	 {
+		  printf("x[%d] = ", i);
+		  scanf("%f", &x[i]);
+		  printf("y[%d] = ", i);
+		  scanf("%f", &y[i]);
+	 }
+	 printf("Enter interpolation point: ");
+	 scanf("%f", &xp);
+	
+	 for(i=1;i<=n;i++)
+	 {
+		  p=1;
+		  for(j=1;j<=n;j++)
+		  {
+			   if(i!=j)
+			   {
+			    	p = p* (xp - x[j])/(x[i] - x[j]);
+			   }
+		  }
+		  yp = yp + p * y[i];
+	 }
+	 printf("Interpolated value at %.3f is %.3f.", xp, yp);
+	 getch();
+}
+
+             </center>  </code></pre>
+            </div>
+            <div class="output-container" id="output1">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Enter number of data: 5 
+Enter data:
+x[1] = 5 
+y[1] = 150 
+x[2] = 7 
+y[2] = 392 
+x[3] = 11 
+y[3] = 1452 
+x[4] = 13 
+y[4] = 2366 
+x[5] = 17 
+y[5] = 5202 
+Enter interpolation point: 9 
+Interpolated value at 9.000 is 810.000.
+
+
+               </center> </code></pre>
+            </div>
+
+            <div class="code-container" id="code2" style="display:none;">
+                <h2><center> code</center></h2>
+                <pre><code><center>
+
+
+#include< stdio.h >
+#include< conio.h >
+
+void main()
+{
+	 float x[100], y[100], xp, yp=0, p;
+	 int i,j,n;
+	 clrscr();
+	 printf("Enter number of data: ");
+	 scanf("%d", &n);
+	 printf("Enter data:\n");
+	 for(i=1;i<=n;i++)
+	 {
+		  printf("x[%d] = ", i);
+		  scanf("%f", &x[i]);
+		  printf("y[%d] = ", i);
+		  scanf("%f", &y[i]);
+	 }
+	 printf("Enter interpolation point: ");
+	 scanf("%f", &xp);
+	 for(i=1;i<=n;i++)
+	 {
+		  p=1;
+		  for(j=1;j<=n;j++)
+		  {
+			   if(i!=j)
+			   {
+			    	p = p* (xp - x[j])/(x[i] - x[j]);
+			   }
+		  }
+		  yp = yp + p * y[i];
+	 }
+	 printf("Interpolated value at %.3f is %.3f.", xp, yp);
+	 getch();
+}
+
+
+
+
+
+             </center>   </code></pre>
+            </div>
+            <div class="output-container" id="output2" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Lagrange Interpolation
+Enter number of data: 5 ↲
+Enter data:
+x[1] = 5 ↲
+y[1] = 150 ↲
+x[2] = 7 ↲
+y[2] = 392 ↲
+x[3] = 11 ↲
+y[3] = 1452 ↲
+x[4] = 13 ↲
+y[4] = 2366 ↲
+x[5] = 17 ↲
+y[5] = 5202 ↲
+Enter interpolation point: 9 ↲
+Interpolated value at 9.000 is 810.000.
+
+               </center> </code></pre>
+            </div>
+
+            <div class="code-container" id="code3" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+ #include < stdio.h >
+
+        #define MAX 10
+        
+        void computeForwardDifference(float x[], float y[][MAX], int n) {
+            for (int j = 1; j < n; j++) {
+                for (int i = 0; i < n - j; i++) {
+                    y[i][j] = y[i + 1][j - 1] - y[i][j - 1];
+                }
+            }
+        }
+        
+        float newtonForwardInterpolation(float x[], float y[][MAX], int n, float value) {
+            float h = x[1] - x[0];
+            float result = y[0][0];
+            float u = (value - x[0]) / h;
+            
+            for (int i = 1; i < n; i++) {
+                float term = 1;
+                for (int j = 0; j < i; j++) {
+                    term *= (u - j) / (i);
+                }
+                result += term * y[0][i];
+            }
+        
+            return result;
+        }
+        
+        int main() {
+            float x[MAX], y[MAX][MAX];
+            int n;
+            float value;
+        
+            printf("Enter the number of data points: ");
+            scanf("%d", &n);
+        
+            printf("Enter the x values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x[%d]: ", i);
+                scanf("%f", &x[i]);
+            }
+        
+            printf("Enter the corresponding y values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("y[%d]: ", i);
+                scanf("%f", &y[i][0]);
+            }
+        
+            computeForwardDifference(x, y, n);
+        
+            printf("Enter the value of x to interpolate: ");
+            scanf("%f", &value);
+        
+            float interpolatedValue = newtonForwardInterpolation(x, y, n, value);
+        
+            printf("The interpolated value at x = %.2f is %.6f\n", value, interpolatedValue);
+        
+            return 0;
+        }
+        
+
+
+                </center></code></pre>
+            </div>
+            <div class="output-container" id="output3" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Enter the number of data points: 5
+    Enter the x values:
+    x[0]: 0
+    x[1]: 1
+    x[2]: 2
+    x[3]: 3
+    x[4]: 4
+    Enter the corresponding y values:
+    y[0]: 1
+    y[1]: 2
+    y[2]: 0
+    y[3]: 2
+    y[4]: 3
+    Enter the value of x to interpolate: 2.5
+    The interpolated value at x = 2.50 is 1.562500
+
+                </center></code></pre>
+            </div>
+<div class="code-container" id="code4" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+ #include < stdio.h >
+
+        #define MAX 10
+        
+        void computeBackwardDifference(float x[], float y[][MAX], int n) {
+            for (int j = 1; j < n; j++) {
+                for (int i = n - 1; i >= j; i--) {
+                    y[i][j] = y[i][j - 1] - y[i - 1][j - 1];
+                }
+            }
+        }
+        
+        float newtonBackwardInterpolation(float x[], float y[][MAX], int n, float value) {
+            float h = x[1] - x[0];
+            float result = y[n - 1][0];
+            float u = (value - x[n - 1]) / h;
+        
+            for (int i = 1; i < n; i++) {
+                float term = 1;
+                for (int j = 0; j < i; j++) {
+                    term *= (u + j) / (i);
+                }
+                result += term * y[n - 1 - i][i];
+            }
+        
+            return result;
+        }
+        
+        int main() {
+            float x[MAX], y[MAX][MAX];
+            int n;
+            float value;
+        
+            printf("Enter the number of data points: ");
+            scanf("%d", &n);
+        
+            printf("Enter the x values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x[%d]: ", i);
+                scanf("%f", &x[i]);
+            }
+        
+            printf("Enter the corresponding y values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("y[%d]: ", i);
+                scanf("%f", &y[i][0]);
+            }
+        
+            computeBackwardDifference(x, y, n);
+        
+            printf("Enter the value of x to interpolate: ");
+            scanf("%f", &value);
+        
+            float interpolatedValue = newtonBackwardInterpolation(x, y, n, value);
+        
+            printf("The interpolated value at x = %.2f is %.6f\n", value, interpolatedValue);
+        
+            return 0;
+        }
+        
+
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output4" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+Enter the number of data points: 5
+    Enter the x values:
+    x[0]: 0
+    x[1]: 1
+    x[2]: 2
+    x[3]: 3
+    x[4]: 4
+    Enter the corresponding y values:
+    y[0]: 1
+    y[1]: 2
+    y[2]: 0
+    y[3]: 2
+    y[4]: 3
+    Enter the value of x to interpolate: 1.5
+    The interpolated value at x = 1.50 is 1.500000
+
+
+ </center></code></pre>
+            </div>
+
+        <div class="code-container" id="code5" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+    #include < stdio.h>
+
+        #define MAX 10
+        
+        void computeDividedDifferences(float x[], float y[][MAX], int n) {
+            for (int j = 1; j < n; j++) {
+                for (int i = 0; i < n - j; i++) {
+                    y[i][j] = (y[i + 1][j - 1] - y[i][j - 1]) / (x[i + j] - x[i]);
+                }
+            }
+        }
+        
+        float newtonDividedDifferenceInterpolation(float x[], float y[][MAX], int n, float value) {
+            float result = y[0][0];
+            float product;
+        
+            for (int i = 1; i < n; i++) {
+                product = 1;
+                for (int j = 0; j < i; j++) {
+                    product *= (value - x[j]);
+                }
+                result += product * y[0][i];
+            }
+        
+            return result;
+        }
+        
+        int main() {
+            float x[MAX], y[MAX][MAX];
+            int n;
+            float value;
+        
+            printf("Enter the number of data points: ");
+            scanf("%d", &n);
+        
+            printf("Enter the x values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("x[%d]: ", i);
+                scanf("%f", &x[i]);
+            }
+        
+            printf("Enter the corresponding y values:\n");
+            for (int i = 0; i < n; i++) {
+                printf("y[%d]: ", i);
+                scanf("%f", &y[i][0]);
+            }
+        
+            computeDividedDifferences(x, y, n);
+        
+            printf("Enter the value of x to interpolate: ");
+            scanf("%f", &value);
+        
+            float interpolatedValue = newtonDividedDifferenceInterpolation(x, y, n, value);
+        
+            printf("The interpolated value at x = %.2f is %.6f\n", value, interpolatedValue);
+        
+            return 0;
+        }
+
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output5" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+
+  Enter the number of data points: 4
+    Enter the x values:
+    x[0]: 0
+    x[1]: 1
+    x[2]: 2
+    x[3]: 3
+    Enter the corresponding y values:
+    y[0]: 1
+    y[1]: 2
+    y[2]: 0
+    y[3]: 2
+    Enter the value of x to interpolate: 1.5
+    The interpolated value at x = 1.50 is 1.250000
+    
+ </center></code></pre>
+            </div>
+
+ <div class="code-container" id="code6" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+   
+  #include < stdio.h >
+
+        float f(float x) {
+            return x * x; 
+        }
+        
+        float trapezoidal(float a, float b, int n) {
+            float h = (b - a) / n; 
+            float sum = 0.5 * (f(a) + f(b)); 
+        
+            for (int i = 1; i < n; i++) {
+                sum += f(a + i * h); 
+            }
+        
+            return sum * h; 
+        }
+        
+        int main() {
+            float a, b; 
+            int n; 
+        
+            printf("Enter the lower limit (a): ");
+            scanf("%f", &a);
+            printf("Enter the upper limit (b): ");
+            scanf("%f", &b);
+            printf("Enter the number of trapezoids (n): ");
+            scanf("%d", &n);
+        
+            float result = trapezoidal(a, b, n);
+            printf("The approximate integral from %.2f to %.2f is %.6f\n", a, b, result);
+        
+            return 0;
+        }
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output6" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+ Enter the lower limit (a): 0
+    Enter the upper limit (b): 3
+    Enter the number of trapezoids (n): 10
+    The approximate integral from 0.00 to 3.00 is 9.000000
+    
+  
+    
+ </center></code></pre>
+            </div>
+
+ <div class="code-container" id="code7" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+    #include < stdio.h >
+
+        float f(float x) {
+            return x * x; 
+        }
+        
+        float simpsons13(float a, float b, int n) {
+            if (n % 2 != 0) {
+                printf("n must be even.\n");
+                return 0;
+            }
+        
+            float h = (b - a) / n;
+            float sum = f(a) + f(b);
+        
+            for (int i = 1; i < n; i++) {
+                if (i % 2 == 0) {
+                    sum += 2 * f(a + i * h);
+                } else {
+                    sum += 4 * f(a + i * h);
+                }
+            }
+        
+            return sum * (h / 3);
+        }
+        
+        int main() {
+            float a, b;
+            int n;
+        
+            printf("Enter the lower limit (a): ");
+            scanf("%f", &a);
+            printf("Enter the upper limit (b): ");
+            scanf("%f", &b);
+            printf("Enter the number of segments (n, must be even): ");
+            scanf("%d", &n);
+        
+            float result = simpsons13(a, b, n);
+            printf("The approximate integral from %.2f to %.2f is %.6f\n", a, b, result);
+        
+            return 0;
+        }
+ 
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output7" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+    Enter the lower limit (a): 0
+    Enter the upper limit (b): 3
+    Enter the number of segments (n, must be even): 6
+    The approximate integral from 0.00 to 3.00 is 9.000000
+    
+ </center></code></pre>
+            </div>
+            
+ <div class="code-container" id="code8" style="display:none;">
+                <h2><center>code</center></h2>
+                <pre><code><center>
+      #include < stdio.h>
+
+        float f(float x) {
+            return x * x; 
+        }
+            float simpsons38(float a, float b, int n) {
+            if (n % 3 != 0) {
+                printf("n must be a multiple of 3.\n");
+                return 0;
+            }
+            float h = (b - a) / n;
+            float sum = f(a) + f(b);
+            for (int i = 1; i < n; i++) {
+                if (i % 3 == 0) {
+                    sum += 2 * f(a + i * h);
+                } else {
+                    sum += 3 * f(a + i * h);
+                }
+            }
+        return sum * (3 * h / 8);
+        }
+         int main() {
+            float a, b;
+            int n;
+            printf("Enter the lower limit (a): ");
+            scanf("%f", &a);
+            printf("Enter the upper limit (b): ");
+            scanf("%f", &b);
+            printf("Enter the number of segments (n, must be a multiple of 3): ");
+            scanf("%d", &n);
+        
+            float result = simpsons38(a, b, n);
+            printf("The approximate integral from %.2f to %.2f is %.6f\n", a, b, result);
+        
+            return 0;
+        }
+ 
+</center></code></pre>
+            </div>
+
+ <div class="output-container" id="output8" style="display:none;">
+                <h2><center>Output</center></h2>
+                <pre><code><center>
+  
+    Enter the lower limit (a): 0
+    Enter the upper limit (b): 3
+    Enter the number of segments (n, must be a multiple of 3): 6
+    The approximate integral from 0.00 to 3.00 is 9.000000
+    
+ </center></code></pre>
+            </div>
+    </div>
+
+    <script>
+        function showProgram(questionNumber) {
+            // Hide all code and output sections
+            document.querySelectorAll('.code-container,.output-container').forEach((el) => {
+                el.style.display = 'none';
+            });
+
+            // Show the selected question's code and output
+            document.getElementById('code' + questionNumber).style.display = 'block';
+            document.getElementById('output' + questionNumber).style.display = 'block';
+
+            // Show the code-output container
+            document.getElementById('output-container').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
